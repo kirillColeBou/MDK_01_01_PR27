@@ -36,8 +36,7 @@ namespace Кинотеатры_Тепляков.Elements
 
         private void Change(object sender, RoutedEventArgs e)
         {
-            MainWindow.init.OpenPages(MainWindow.pages.addCinema);
-            AddCinema.addCinema.btnAdd.Content = "Изменить";
+            MainWindow.init.frame.Navigate(new AddCinema(cinema));
         }
 
         private void Delete(object sender, RoutedEventArgs e)

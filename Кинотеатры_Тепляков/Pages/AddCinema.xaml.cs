@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Кинотеатры_Тепляков.Models;
 
 namespace Кинотеатры_Тепляков.Pages
 {
@@ -21,17 +22,30 @@ namespace Кинотеатры_Тепляков.Pages
     /// </summary>
     public partial class AddCinema : Page
     {
+        public Models.Cinema Cinema;
         public static AddCinema addCinema;
-        public AddCinema()
+        public AddCinema(Models.Cinema Cinema = null)
         {
             InitializeComponent();
             addCinema = this;
+            if(Cinema != null)
+            {
+                this.Cinema = Cinema;
+                tb_name.Text = this.Cinema.NameCinema;
+                tb_count_hall.Text = this.Cinema.CountHall.ToString();
+                tb_count_place.Text = this.Cinema.CountPlace.ToString();
+                btnAdd.Content = "Изменить";
+            }
         }
 
         private void AddNewCinema_db(object sender, RoutedEventArgs e)
         {
             MySqlConnection connection = Classes.Connection.DBConnection.OpenConnection();
-            Classes.Connection.DBConnection.Query($"INSERT INTO Cinemas.cinema (name_cinema, count_hall, count_place) VALUES ('{tb_name.Text}', '{Convert.ToInt32(tb_count_hall.Text)}', '{Convert.ToInt32(tb_count_place.Text)}')", connection);
+            if (btnAdd.Content.ToString() == "Добавить")
+                Classes.Connection.DBConnection.Query($"INSERT INTO Cinemas.cinema (name_cinema, count_hall, count_place) VALUES ('{tb_name.Text}', '{Convert.ToInt32(tb_count_hall.Text)}', '{Convert.ToInt32(tb_count_place.Text)}')", connection);
+            else if (btnAdd.Content.ToString() == "Изменить")
+                Classes.Connection.DBConnection.Query($"UPDATE Cinemas.cinema SET name_cinema = '{tb_name.Text}', count_hall = '{tb_count_hall.Text}', count_place = '{tb_count_place.Text}' WHERE id = '{Cinema.Id}';", connection);
+            else return;
             Classes.Connection.DBConnection.CloseConnection(connection);
             MainWindow.init.OpenPages(MainWindow.pages.cinema);
         }

@@ -24,6 +24,7 @@ namespace Кинотеатры_Тепляков.Elements
     public partial class Item_poster : UserControl
     {
         public PosterContext poster;
+        public CinemaContext cinema;
         public Item_poster(PosterContext item)
         {
             InitializeComponent();
@@ -36,8 +37,7 @@ namespace Кинотеатры_Тепляков.Elements
 
         private void Change(object sender, RoutedEventArgs e)
         {
-            MainWindow.init.OpenPages(MainWindow.pages.addPoster);
-            AddPoster.addPoster.btnAdd.Content = "Изменить";
+            MainWindow.init.frame.Navigate(new Pages.AddPoster(poster));
         }
 
         private void Delete(object sender, RoutedEventArgs e)

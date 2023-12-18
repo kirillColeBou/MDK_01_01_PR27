@@ -24,11 +24,28 @@ namespace Кинотеатры_Тепляков.Pages
     {
         public static AddPoster addPoster;
         public List<CinemaContext> cinemaContexts = CinemaContext.AllCinemas();
-        public AddPoster()
+        public Models.Poster Poster;
+        public AddPoster(Models.Poster Poster = null)
         {
             InitializeComponent();
             addPoster = this;
-            foreach(CinemaContext item in cinemaContexts)
+            CreateCinema();
+            if (Poster != null)
+            {
+                this.Poster = Poster;
+                string name_cinema = Poster.NameCinema;
+                cb_name_cinema.Text = name_cinema;
+                tb_name_film.Text = this.Poster.NameFilm;
+                tb_time.Text = this.Poster.Time;
+                tb_price.Text = this.Poster.Price;
+                btnAdd.Content = "Изменить";
+            }
+        }
+
+        public void CreateCinema()
+        {
+            cb_name_cinema.Items.Clear();
+            foreach (CinemaContext item in cinemaContexts)
             {
                 ComboBoxItem items = new ComboBoxItem();
                 items.Tag = item.Id;
@@ -41,7 +58,11 @@ namespace Кинотеатры_Тепляков.Pages
         {
             MySqlConnection connection = Classes.Connection.DBConnection.OpenConnection();
             ComboBoxItem selectedItem = cb_name_cinema.SelectedItem as ComboBoxItem;
-            Classes.Connection.DBConnection.Query($"INSERT INTO Cinemas.poster (id_cinema, name_film, time, price) VALUES ('{selectedItem.Tag}', '{tb_name_film.Text}', '{tb_time.Text}', '{tb_price.Text}')", connection);
+            if (btnAdd.Content.ToString() == "Добавить")
+                Classes.Connection.DBConnection.Query($"INSERT INTO Cinemas.poster (id_cinema, name_film, time, price) VALUES ('{selectedItem.Tag}', '{tb_name_film.Text}', '{tb_time.Text}', '{tb_price.Text}')", connection);
+            else if (btnAdd.Content.ToString() == "Изменить")
+                Classes.Connection.DBConnection.Query($"UPDATE Cinemas.poster SET id_cinema = '{selectedItem.Tag}', name_film = '{tb_name_film.Text}', time = '{tb_time.Text}', price = '{tb_price.Text}' WHERE id = '{Poster.Id}';", connection);
+            else return;
             Classes.Connection.DBConnection.CloseConnection(connection);
             MainWindow.init.OpenPages(MainWindow.pages.main);
         }
