@@ -15,7 +15,7 @@
         <Grid Margin="0,80,0,0" MinHeight="420" Height="420" VerticalAlignment="Top">
             <Label Content="Название кинотеатра:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" FontSize="16"/>
             <ComboBox x:Name="cb_name_cinema" VerticalAlignment="Top" Margin="10,40,10,10" Height="30"/>
-            <Label Content="Количество фильма:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" FontSize="16"/>
+            <Label Content="Название фильма:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,75,0,0" FontSize="16"/>
             <TextBox x:Name="tb_name_film" VerticalAlignment="Top"  Margin="10,110,10,10" Height="30"/>
             <Label Content="Время сеанса:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,145,0,0" FontSize="16"/>
             <TextBox x:Name="tb_time" VerticalAlignment="Top" Margin="10,180,10,10" Height="30"/>

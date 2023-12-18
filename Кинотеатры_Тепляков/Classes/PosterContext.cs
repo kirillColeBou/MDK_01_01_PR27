@@ -8,5 +8,6 @@ namespace Кинотеатры_Тепляков.Classes
 {
     public class PosterContext
     {
+
     }
 }
