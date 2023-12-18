@@ -21,7 +21,7 @@
             <TextBox x:Name="tb_count_place" VerticalAlignment="Top" Margin="10,180,10,10" Height="30"/>
         </Grid>
         <Grid VerticalAlignment="Bottom" MinHeight="50">
-            <Button x:Name="btnAdd"  Click="AddNewGift_db" Content="Добавить" Width="120" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <Button x:Name="btnAdd"  Click="AddNewCinema_db" Content="Добавить" Width="120" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0"/>
             <Button Click="BackPage" Content="Назад" Width="120" Height="25" HorizontalAlignment="Left" Margin="140,0,0,0"/>
         </Grid>
     </Grid>
