@@ -20,9 +20,11 @@ namespace Кинотеатры_Тепляков.Pages
     /// </summary>
     public partial class AddPoster : Page
     {
+        public static AddPoster addPoster;
         public AddPoster()
         {
             InitializeComponent();
+            addPoster = this;
         }
 
         private void AddNewPoster_db(object sender, RoutedEventArgs e)

@@ -20,9 +20,11 @@ namespace Кинотеатры_Тепляков.Pages
     /// </summary>
     public partial class AddCinema : Page
     {
+        public static AddCinema addCinema;
         public AddCinema()
         {
             InitializeComponent();
+            addCinema = this;
         }
 
         private void AddNewCinema_db(object sender, RoutedEventArgs e)

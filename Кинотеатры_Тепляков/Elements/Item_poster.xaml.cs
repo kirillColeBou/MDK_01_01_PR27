@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Кинотеатры_Тепляков.Classes;
+using Кинотеатры_Тепляков.Pages;
+using MySql.Data.MySqlClient;
 
 namespace Кинотеатры_Тепляков.Elements
 {
@@ -21,9 +23,11 @@ namespace Кинотеатры_Тепляков.Elements
     /// </summary>
     public partial class Item_poster : UserControl
     {
+        public PosterContext poster;
         public Item_poster(PosterContext item)
         {
             InitializeComponent();
+            poster = item;
             nameFilm.Content = item.NameFilm;
             nameCinema.Content = "Название кинотеатра: " + item.NameCinema;
             time.Content = "Время сеанса: " + item.Time;
@@ -32,12 +36,16 @@ namespace Кинотеатры_Тепляков.Elements
 
         private void Change(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.init.OpenPages(MainWindow.pages.addPoster);
+            AddPoster.addPoster.btnAdd.Content = "Изменить";
         }
 
         private void Delete(object sender, RoutedEventArgs e)
         {
-
+            MySqlConnection connection = Classes.Connection.DBConnection.OpenConnection();
+            MySqlDataReader command = Classes.Connection.DBConnection.Query($"DELETE FROM Cinemas.poster WHERE id = '{poster.Id}'", connection);
+            Classes.Connection.DBConnection.CloseConnection(connection);
+            MainWindow.init.OpenPages(MainWindow.pages.main);
         }
     }
 }
