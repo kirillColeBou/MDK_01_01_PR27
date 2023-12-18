@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Кинотеатры_Тепляков.Classes;
 
 namespace Кинотеатры_Тепляков.Pages
 {
@@ -20,9 +21,20 @@ namespace Кинотеатры_Тепляков.Pages
     /// </summary>
     public partial class Cinema : Page
     {
+        public List<CinemaContext> cinemaContexts = CinemaContext.AllCinemas();
         public Cinema()
         {
             InitializeComponent();
+            CreateUI();
+        }
+
+        public void CreateUI()
+        {
+            parrent.Children.Clear();
+            foreach(CinemaContext item in cinemaContexts)
+            {
+                parrent.Children.Add(new Elements.Item_cinema(item));
+            }
         }
 
         private void AddNewCinema(object sender, RoutedEventArgs e)

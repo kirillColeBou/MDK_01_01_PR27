@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Кинотеатры_Тепляков.Classes;
 
 namespace Кинотеатры_Тепляков.Elements
 {
@@ -20,9 +21,22 @@ namespace Кинотеатры_Тепляков.Elements
     /// </summary>
     public partial class Item_cinema : UserControl
     {
-        public Item_cinema()
+        public Item_cinema(CinemaContext item)
         {
             InitializeComponent();
+            nameCinema.Content = item.NameCinema;
+            countHall.Content = "Количество залов: " + item.CountHall;
+            countPlace.Content = "Количество мест: " + item.CountPlace;
+        }
+
+        private void Change(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

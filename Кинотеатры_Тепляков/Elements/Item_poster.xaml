@@ -5,7 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Кинотеатры_Тепляков.Elements"
              mc:Ignorable="d">
-    <Grid>
-            
+    <Grid Background="White" Margin="10,10,10,10" Height="200" VerticalAlignment="Top">
+        <Label Content="Название фильма" x:Name="nameFilm" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Название кинотеатра" x:Name="nameCinema" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,55,0,0" FontSize="20"/>
+        <Label Content="Вермя" x:Name="time" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" FontSize="20"/>
+        <Label Content="Цена" x:Name="price" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,145,0,0" FontSize="20"/>
+        <Button Content="Изменить" Click="Change" Margin="0,0,120,20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="25"/>
+        <Button Content="Удалить" Click="Delete" Margin="0,0,10,20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100" Height="25"/>
     </Grid>
 </UserControl>

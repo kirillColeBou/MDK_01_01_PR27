@@ -19,10 +19,10 @@ namespace Кинотеатры_Тепляков.Classes
             while (cinemaQuery.Read())
             {
                 allCinemas.Add(new CinemaContext(
-                    cinemaQuery.GetInt32(1),
-                    cinemaQuery.GetString(2),
-                    cinemaQuery.GetInt32(3),
-                    cinemaQuery.GetInt32(4)));
+                    cinemaQuery.GetInt32(0),
+                    cinemaQuery.GetString(1),
+                    cinemaQuery.GetInt32(2),
+                    cinemaQuery.GetInt32(3)));
             }
             connection.Close();
             MySqlConnection.ClearPool(connection);

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Кинотеатры_Тепляков.Classes;
 
 namespace Кинотеатры_Тепляков.Pages
 {
@@ -20,9 +21,20 @@ namespace Кинотеатры_Тепляков.Pages
     /// </summary>
     public partial class Main : Page
     {
+        public List<PosterContext> posterContexts = PosterContext.AllPosters();
         public Main()
         {
             InitializeComponent();
+            CreateUI();
+        }
+
+        public void CreateUI()
+        {
+            parrent.Children.Clear();
+            foreach(PosterContext item in posterContexts)
+            {
+                parrent.Children.Add(new Elements.Item_poster(item));
+            }
         }
 
         private void AddNewPoster(object sender, RoutedEventArgs e)
