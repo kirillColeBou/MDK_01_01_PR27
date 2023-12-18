@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,9 @@ namespace Кинотеатры_Тепляков.Pages
 
         private void AddNewCinema_db(object sender, RoutedEventArgs e)
         {
+            MySqlConnection connection = Classes.Connection.DBConnection.OpenConnection();
+            Classes.Connection.DBConnection.Query($"INSERT INTO Cinemas.cinema (name_cinema, count_hall, count_place) VALUES ('{tb_name.Text}', '{Convert.ToInt32(tb_count_hall.Text)}', '{Convert.ToInt32(tb_count_place.Text)}')", connection);
+            Classes.Connection.DBConnection.CloseConnection(connection);
             MainWindow.init.OpenPages(MainWindow.pages.cinema);
         }
 
