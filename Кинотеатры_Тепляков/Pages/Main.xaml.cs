@@ -27,12 +27,12 @@ namespace Кинотеатры_Тепляков.Pages
 
         private void AddNewPoster(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.init.OpenPages(MainWindow.pages.addPoster);
         }
 
         private void CinemaWin(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.init.OpenPages(MainWindow.pages.cinema);
         }
     }
 }
