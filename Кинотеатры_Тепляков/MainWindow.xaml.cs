@@ -23,6 +23,24 @@ namespace Кинотеатры_Тепляков
         public MainWindow()
         {
             InitializeComponent();
+            OpenPages(pages.main);
+        }
+
+        public enum pages
+        {
+            main, addPoster, cinema, addCinema
+        }
+
+        public void OpenPages(pages _pages)
+        {
+            if (_pages == pages.main)
+                frame.Navigate(new Pages.Main());
+            if (_pages == pages.addPoster)
+                frame.Navigate(new Pages.AddPoster());
+            if (_pages == pages.cinema)
+                frame.Navigate(new Pages.Cinema());
+            if (_pages == pages.addCinema)
+                frame.Navigate(new Pages.AddCinema());
         }
     }
 }
