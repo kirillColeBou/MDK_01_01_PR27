@@ -24,5 +24,15 @@ namespace Кинотеатры_Тепляков.Pages
         {
             InitializeComponent();
         }
+
+        private void AddNewCinema_db(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPages(MainWindow.pages.cinema);
+        }
+
+        private void BackPage(object sender, RoutedEventArgs e)
+        {
+            MainWindow.init.OpenPages(MainWindow.pages.cinema);
+        }
     }
 }
